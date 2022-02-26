@@ -39,8 +39,6 @@ def select_best(pop,fit):
 
     return output[0:3]
 
-def crossover():
-
 population = initial_population()
 fit = eval_fitness(population)
 select_best(population,fit)
