@@ -1,6 +1,8 @@
 from random import randint
 
 # Genetic Algorithm
+
+# Method to establish an initial Population
 def initial_population():
     population = []
     for i in range(0,1000):
@@ -68,7 +70,7 @@ def mutation(s):
     print("Mutated String:    "+mutate)
     return mutate
 
-# Methods Used and numer of Generations initialised
+# Methods Used and number of Generations initialised
 population = initial_population()
 fit = eval_fitness(population)
 num_generations = 0
