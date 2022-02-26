@@ -50,12 +50,31 @@ def crossover(s1,s2, point):
     print(s1, s2)
     print("Children")
     print(c1,c2)
-    return
+    return c1,c2
+
+# Mutation Method
+def mutation(s):
+    mutate = ""
+    bit = randint(0,len(s)-1)
+    for i in range(0,len(s)):
+        if(i == bit):
+            if(s[i] == '0'):
+                mutate = mutate + '1'
+            else:
+                mutate = mutate + '0'
+        else:
+            mutate = mutate + s[i]
+    print("\nMutation Opperations:")
+    print("Original:          " + s)
+    print("Bit to be mutated: ", bit)
+    print("Mutated String:    "+mutate)
+    return mutate
 
 # Methods used by Algorithm
 population = initial_population()
 fit = eval_fitness(population)
 best = select_best(population,fit)
 cross = crossover(best[0],best[1],randint(0,len(best[0])))
+mute = mutation(cross[0])
 
 
