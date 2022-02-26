@@ -12,6 +12,7 @@ def initial_population():
     print(population)
     return population
 
+# Evaluate fitness
 def eval_fitness(pop):
     list = []
     for s in pop:
