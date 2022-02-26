@@ -3,7 +3,7 @@ from random import randint
 # Genetic Algorithm
 def initial_population():
     population = []
-    for i in range(0,5):
+    for i in range(0,1000):
         sentence = ""
         for k in range(0,30):
             ran = randint(0,1)
@@ -17,8 +17,6 @@ def eval_fitness(pop):
     list = []
     for s in pop:
         fit = 0
-        for n in s:
-            fit = fit + int(n)
         fit = s.count('1')
         list.append(fit)
     return list
@@ -31,7 +29,7 @@ def sort_population(i):
 def select_best(pop,fit):
     list = []
     output = []
-    top = 3
+    top = 100
     for n in range(0,len(pop)):
         list.append([pop[n],fit[n]])
 
@@ -40,7 +38,7 @@ def select_best(pop,fit):
     for k in list:
         output.append(k[0])
     print("Top", top,"\n",output[0:top])
-    return output[0:3]
+    return output[0:top]
 
 # Crossover Method
 def crossover(s1,s2, point):
@@ -70,11 +68,24 @@ def mutation(s):
     print("Mutated String:    "+mutate)
     return mutate
 
-# Methods used by Algorithm
+# Methods Used and numer of Generations initialised
 population = initial_population()
 fit = eval_fitness(population)
-best = select_best(population,fit)
-cross = crossover(best[0],best[1],randint(0,len(best[0])))
-mute = mutation(cross[0])
+num_generations = 0
+
+# Loops through Generations to perform
+# operations Crossover and Mutate
+while max(fit) < 30:
+    num_generations = num_generations + 1
+    best = select_best(population,fit)
+
+    for i in range(0,len(best)-1):
+        cross = crossover(best[i],best[i+1],randint(0,len(best[0])))
+        mute = mutation(cross[0])
+        population.append(mute)
+    fit = eval_fitness(population)
+
+print("Solution found in: ",num_generations)
+
 
 
