@@ -1,5 +1,6 @@
 from random import randint
 
+# Genetic Algorithm
 def initial_population():
     population = []
     for i in range(0,5):
