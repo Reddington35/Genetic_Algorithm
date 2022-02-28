@@ -46,12 +46,12 @@ def select_best(pop,fit):
 
 # Crossover Method
 def crossover(s1,s2, point):
-    # print("\nCrossover Operations:\nParents")
+    print("\nCrossover Operations:\nParents")
     c1 = s1[0:point] + s2[point:len(s1)]
     c2 = s2[0:point] + s1[point:len(s1)]
-    # print(s1, s2)
-    # print("Children")
-    # print(c1,c2)
+    print(s1, s2)
+    print("Children")
+    print(c1,c2)
     return c1,c2
 
 # Mutation Method
@@ -67,10 +67,10 @@ def mutation(s):
                 mutate = mutate + '0'
         else:
             mutate = mutate + s[i]
-    # print("\nMutation Opperations:")
-    # print("Original:          " + s)
-    # print("Bit to be mutated: ", bit)
-    # print("Mutated String:    "+mutate)
+    print("\nMutation Opperations:")
+    print("Original:          " + s)
+    print("Bit to be mutated: ", bit)
+    print("Mutated String:    "+mutate)
     return mutate
 
 # Methods Used and number of Generations initialised
@@ -89,7 +89,6 @@ while max(fit) < 30:
         mute = mutation(cross[0])
         population.append(mute)
     fit = eval_fitness(population)
-
 
 print("Solution found in: ",num_generations)
 
