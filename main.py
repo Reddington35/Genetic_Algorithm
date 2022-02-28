@@ -8,6 +8,7 @@ import numpy as np
 mean_fitness_values = []
 
 def initial_population():
+
     population = []
     for i in range(0,1000):
         sentence = ""
