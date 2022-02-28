@@ -1,5 +1,5 @@
 from random import randint
-
+import statistics
 # Genetic Algorithm
 
 # Method to establish an initial Population
@@ -21,6 +21,7 @@ def eval_fitness(pop):
         fit = 0
         fit = s.count('1')
         list.append(fit)
+    print("Average fitness over the generation: ", statistics.mean(list))
     return list
 
 # sort population
@@ -39,17 +40,17 @@ def select_best(pop,fit):
 
     for k in list:
         output.append(k[0])
-    print("Top", top,"\n",output[0:top])
+    # print("Top", top,"\n",output[0:top])
     return output[0:top]
 
 # Crossover Method
 def crossover(s1,s2, point):
-    print("\nCrossover Opperations:\nParents")
+    # print("\nCrossover Operations:\nParents")
     c1 = s1[0:point] + s2[point:len(s1)]
     c2 = s2[0:point] + s1[point:len(s1)]
-    print(s1, s2)
-    print("Children")
-    print(c1,c2)
+    # print(s1, s2)
+    # print("Children")
+    # print(c1,c2)
     return c1,c2
 
 # Mutation Method
@@ -65,10 +66,10 @@ def mutation(s):
                 mutate = mutate + '0'
         else:
             mutate = mutate + s[i]
-    print("\nMutation Opperations:")
-    print("Original:          " + s)
-    print("Bit to be mutated: ", bit)
-    print("Mutated String:    "+mutate)
+    # print("\nMutation Opperations:")
+    # print("Original:          " + s)
+    # print("Bit to be mutated: ", bit)
+    # print("Mutated String:    "+mutate)
     return mutate
 
 # Methods Used and number of Generations initialised
@@ -78,6 +79,7 @@ num_generations = 0
 
 # Loops through Generations to perform
 # operations Crossover and Mutate
+
 while max(fit) < 30:
     num_generations = num_generations + 1
     best = select_best(population,fit)
@@ -87,6 +89,7 @@ while max(fit) < 30:
         mute = mutation(cross[0])
         population.append(mute)
     fit = eval_fitness(population)
+
 
 print("Solution found in: ",num_generations)
 
