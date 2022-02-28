@@ -1,8 +1,12 @@
 from random import randint
 import statistics
+import matplotlib.pyplot as plt
 # Genetic Algorithm
 
 # Method to establish an initial Population
+import numpy as np
+mean_fitness_values = []
+
 def initial_population():
     population = []
     for i in range(0,1000):
@@ -22,7 +26,7 @@ def eval_fitness(pop):
         fit = s.count('1')
         list.append(fit)
     # prints fitness
-    print("Average fitness over the generation: ", statistics.mean(list))
+    mean_fitness_values.append(statistics.mean(list))
     return list
 
 # sort population
@@ -80,7 +84,10 @@ num_generations = 0
 
 # Loops through Generations to perform
 # operations Crossover and Mutate
-
+def plotFitnessValues(list):
+    list = np.array(list)
+    plt.plot(list)
+    plt.show()
 while max(fit) < 30:
     num_generations = num_generations + 1
     best = select_best(population,fit)
@@ -91,8 +98,8 @@ while max(fit) < 30:
         population.append(mute)
     fit = eval_fitness(population)
 
-
 print("Solution found in: ",num_generations)
+plotFitnessValues(mean_fitness_values)
 
 
 
