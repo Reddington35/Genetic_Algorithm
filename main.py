@@ -80,7 +80,6 @@ num_generations = 0
 
 # Loops through Generations to perform
 # operations Crossover and Mutate
-
 while max(fit) < 30:
     num_generations = num_generations + 1
     best = select_best(population,fit)
