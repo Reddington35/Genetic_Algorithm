@@ -21,6 +21,7 @@ def eval_fitness(pop):
         fit = 0
         fit = s.count('1')
         list.append(fit)
+    # prints fitness
     print("Average fitness over the generation: ", statistics.mean(list))
     return list
 
