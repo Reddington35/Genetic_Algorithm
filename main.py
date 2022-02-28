@@ -53,6 +53,7 @@ def crossover(s1,s2, point):
     return c1,c2
 
 # Mutation Method
+######
 def mutation(s):
     mutate = ""
     bit = randint(0,len(s)-1)
