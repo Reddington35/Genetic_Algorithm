@@ -41,7 +41,7 @@ def select_best(pop,fit):
 
     for k in list:
         output.append(k[0])
-    # print("Top", top,"\n",output[0:top])
+    print("Top", top,"\n",output[0:top])
     return output[0:top]
 
 # Crossover Method
